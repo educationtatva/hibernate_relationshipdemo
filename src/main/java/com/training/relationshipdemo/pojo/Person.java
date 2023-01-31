@@ -1,7 +1,12 @@
 package com.training.relationshipdemo.pojo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 
@@ -11,14 +16,17 @@ public class Person {
 	private int pid;
 	private String name;
 	private String hobby;
-	@OneToOne
-	private Laptop laptop;
-	public Laptop getLaptop() {
-		return laptop;
+
+   @ManyToMany(mappedBy = "listPerson")
+	private List<Laptop> llist = new ArrayList<Laptop>();
+	public List<Laptop> getLlist() {
+		return llist;
 	}
-	public void setLaptop(Laptop laptop) {
-		this.laptop = laptop;
+	public void setLlist(List<Laptop> llist) {
+		this.llist = llist;
 	}
+
+
 	public int getPid() {
 		return pid;
 	}
